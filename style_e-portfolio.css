@@ -353,9 +353,13 @@ nav{
     filter: blur(5px);
 }
 
-.project:hover .project__description{
+.project:hover .project__description {
     opacity: 1;
     transform: translateY(-50%);
+}
+
+.project:hover .project:focus{
+    background-color: #1c1d25;
 }
 
 .project__list{
