@@ -25,6 +25,11 @@ h1{
 a {
     text-decoration: none;
     position: relative;
+    transition: opacity 300ms ease;
+}
+
+i:hover {
+    opacity: 0.7;
 }
 
 .link__hover-effect:after{                  /*Für die Unterstriche */
@@ -77,6 +82,7 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 12px;
 }
 
 .nav__link--list{
@@ -123,6 +129,7 @@ nav{
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
+    padding: 0 12px;
 
 }
 
@@ -155,6 +162,19 @@ nav{
     overflow: hidden;           /*Macht den Rand ründlich - aber funkt nur mit border-radius                             */
     box-shadow: 0 8px 16px  rgb(0, 0, 0, 0.3);
     margin-bottom: 28px;
+    animation: animate-profile-picture 800ms 200ms backwards;           /*Backwards damit @keyframes von scale 0 startet*/
+}
+
+@keyframes animate-profile-picture {
+    0%{
+        transform: scale(0);
+    }
+    80%{
+        transform: scale(1.1);
+    }
+    100%{
+        transform: scale(1);
+    }
 }
 
 .about-me__picture{
@@ -169,19 +189,34 @@ nav{
     color: #6030b1;
 }
 
+.about-me__info--title{
+    margin-bottom: 16px;
+    animation: fade-up 800ms 400ms backwards;
+}
+
 .about-me__info--para{
     font-size: 20px;
     margin-bottom: 28px;
+    animation: fade-up 800ms 600ms backwards;
 }
 
-.about-me__info--title{
-    margin-bottom: 16px;
-}
 
 .about-me__link{
     font-size: 20px;
     color: #242424;
     padding: 0 16px;
+    animation: fade-up 800ms 1.5s backwards;
+}
+
+@keyframes fade-up{
+    0%{
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .about-me__img.container{
@@ -192,8 +227,36 @@ nav{
 
 .about-me__img{
     width: 100%;
+    animation: fade-in-image 1200ms 800ms backwards;
 }
 
+@keyframes fade-in-image {
+    0% {
+        opacity: 0;
+    } 
+    100% {
+        opacity: 1;
+    }
+}
+
+.wave{
+    display: inline-block;              /* display: inline-block, da inlines sich nicht animieren können und durch block ==> animation möglich*/
+    animation: animate-wave 500ms infinite ease-in-out;
+    
+}
+
+@keyframes animate-wave {
+    0% {
+        transform: rotate(0);
+    }
+    50%{
+        transform: rotate(30deg);
+    }
+    100% {
+        transform: rotate(0);
+    }
+    
+}
 
 /* TECH - STACK */
 
@@ -218,13 +281,14 @@ nav{
 }
 .language__img--wrapper{
     display: flex;
-    justify-content: center;
+    justify-content: center;           /* Damit die Icons schön symmetrisch sind*/
     align-items: center;
     padding: 25px 16px;
 }
 
 .language__list{
     display: flex;
+    justify-content: center;
     width: 100%;
     flex-wrap: wrap;                /* Macht die Logos nach auffüllen des Randes untereinander */
 }
@@ -388,4 +452,67 @@ footer{
 .footer__anchor:hover .footer__logo--popper{
     transform: translateX(60px);    
     opacity: 1;
+}
+
+
+/* Small phones, tablets, large smartphones */
+@media  (max-width: 768px){
+    nav {
+        height: 68px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+    .about-me__info--para{
+        font-size: 18px;
+    }
+    
+    .language{
+        width: calc(100% / 2);
+    }
+
+    .project__description--para{
+        font-size: 16px;
+    }
+
+    .project__description{
+        left: 25px;
+        padding-right: 30px;
+    }
+}
+
+
+/*SMALL PHONES */
+@media (max-width: 480px){
+    .nav__link:not(:last-child){
+        display: none;
+    }
+
+    .project__description{
+        padding: 0;
+        width: 100%;
+        left: 0;
+    }
+
+    .project__description--para{
+        display: none;
+    }
+
+    .project__description--links{
+        display: flex;
+        justify-content: center;
+    }
+
+    .project__description--title{
+        font-size: 32px;
+        line-height: 1;
+        text-align: center;
+    }
+
+    .project__description--sub-title{
+        text-align: center;
+        margin: 12px 0;
+    }
+
 }
