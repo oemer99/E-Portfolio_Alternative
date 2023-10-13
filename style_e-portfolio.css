@@ -290,7 +290,7 @@ nav{
     display: flex;
     justify-content: center;
     width: 100%;
-    flex-wrap: wrap;                /* Macht die Logos nach auffüllen des Randes untereinander */
+   /*  flex-wrap: wrap;                Macht die Logos nach auffüllen des Randes untereinander */
 }
 
 .language__name{
